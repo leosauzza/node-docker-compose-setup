@@ -2,9 +2,9 @@ const express = require('express')
 const mysql = require('mysql2');
 
 const mysqlConfig = {
-  host: "mysql_server",
-  user: "dan",
-  password: "secret",
+  host: "mysql",
+  user: "root",
+  password: "root",
   database: "test_db"
 }
 
@@ -14,13 +14,15 @@ const app = express()
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', function (req, res) {
-  res.send('hello world')
+  res.send('Nodemon esta funcionando maquina')
 })
 
 app.get('/connect', function (req, res) {
   con =  mysql.createConnection(mysqlConfig);
   con.connect(function(err) {
-    if (err) throw err;
+    if (err) {
+      throw err;
+    }
     res.send('connected')
   });
 })
